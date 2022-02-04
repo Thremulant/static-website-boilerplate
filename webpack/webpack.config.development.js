@@ -10,9 +10,12 @@ module.exports = merge(config, {
   devtool: 'inline-source-map',
 
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    compress: true,
+    writeToDisk: true,
     port: 9000,
     hot: true
+  },
+
+  output: {
+    path: path.join(__dirname, '../public')
   }
 })

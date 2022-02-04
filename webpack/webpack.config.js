@@ -3,20 +3,19 @@ const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
-const TerserPlugin = require("terser-webpack-plugin")
-
+const TerserPlugin = require('terser-webpack-plugin')
 
 const IS_DEVELOPMENT = process.env.NODE_ENV === 'dev'
 
-const dirApp = path.join(__dirname, '../app')
-const dirAssets = path.join(__dirname, '../assets')
+const dirApp = path.join(__dirname, '../src')
+const dirShared = path.join(__dirname, '../shared')
 const dirStyles = path.join(__dirname, '../styles')
 const dirNode = 'node_modules'
 
 module.exports = {
   optimization: {
     minimize: true,
-    minimizer: [new TerserPlugin()],
+    minimizer: [new TerserPlugin()]
   },
   entry: [
     path.join(dirApp, 'index.js'),
@@ -24,14 +23,9 @@ module.exports = {
   ],
 
   resolve: {
-    // alias: {
-    //   '@app': dirApp,
-    //   '@assets': dirAssets,
-    //   '@styles': dirStyles,
-    // },
     modules: [
       dirApp,
-      dirAssets,
+      dirShared,
       dirStyles,
       dirNode
     ]
@@ -43,7 +37,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin({
       patterns: [
-        { from: './assets', to: '' }
+        { from: './shared', to: '' }
       ]
     }),
     new MiniCssExtractPlugin({

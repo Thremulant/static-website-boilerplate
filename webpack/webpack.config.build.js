@@ -9,7 +9,7 @@ module.exports = merge(config, {
   mode: 'production',
 
   output: {
-    path: path.join(__dirname, 'public')
+    path: path.join(__dirname, '../build')
   },
   plugins: [
     new CleanWebpackPlugin()

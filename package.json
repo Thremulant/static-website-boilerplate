@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:prod": "webpack --progress --config ./webpack/webpack.config.build.js",
-    "build:dev": "webpack serve --progress --config ./webpack/webpack.config.development.js",
-    "start": "npm run build:dev"
+    "prod": "webpack --progress --config ./webpack/webpack.config.build.js",
+    "dev": "webpack serve --progress --config ./webpack/webpack.config.development.js",
+    "start": "npm run dev"
   },
   "repository": {
     "type": "git",
